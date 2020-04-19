@@ -1,7 +1,17 @@
 <div class="container">
-  <form >
-      <p>Email: <input type="email" name="login"></p>
-      <p>Пароль: <input type="password" name="pass"></p>
-      <p><input type="submit" value="Вход"></p>
+  <form [formGroup]="myFirstReactiveForm" (submit)="onSubmit()">
+      <div class="div_input"><label> Email:  <input type="text"  formControlName="name" /></label>
+      <div class="error" *ngIf="isControlInvalid('name')">
+        Имя должно состоять только из русских букв
+      </div></div>
+      <div class="div_input"><label>Name: <input type="text"  formControlName="email" /></label>
+      <div class="error" *ngIf="isControlInvalid('email')">
+        Email не введен
+      </div></div>
+      <input type="submit" value="Вход">
   </form>
 </div>
+
+<div>
+  {{myFirstReactiveForm.value | json}}
+ </div>
