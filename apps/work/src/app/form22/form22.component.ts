@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: "nx-form22",
@@ -15,6 +15,9 @@ export class Form22Component {
       state: [''],
       zip: ['']
     }),
+    aliases: this.fb.array([
+      this.fb.control('')
+    ])
   });
 
   constructor(private fb: FormBuilder) { }
@@ -31,4 +34,12 @@ export class Form22Component {
       }
     });
   }  
+
+  get aliases() {
+    return this.profileForm.get('aliases') as FormArray;
+  }
+
+  addAlias() {
+    this.aliases.push(this.fb.control(''));
+  }
 }
