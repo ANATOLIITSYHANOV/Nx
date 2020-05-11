@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EmailValidator } from '../shared/email.validator';
+
 
 @Component({
     selector: 'nx-form',
@@ -9,8 +11,9 @@ import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 export class FormComponent implements OnInit  {
   myFirstReactiveForm: FormGroup;
  
-  constructor(private fb: FormBuilder){}
- 
+  constructor(private fb: FormBuilder, 
+              private EmailValidator: EmailValidator){}
+  
   ngOnInit(){  
    this.initForm();
   }
@@ -29,10 +32,12 @@ export class FormComponent implements OnInit  {
       [
         Validators.required, 
         Validators.email
-      ]
+      ],
+      [this.EmailValidator.validate.bind(this.EmailValidator)]
     ]
    });
   }
+
 
   isControlInvalid(controlName: string): boolean {
     const control = this.myFirstReactiveForm.controls[controlName];

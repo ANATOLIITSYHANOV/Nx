@@ -1,10 +1,10 @@
 <div class="container">
   <form [formGroup]="myFirstReactiveForm" (submit)="onSubmit()">
-      <div class="div_input"><label> Email:  <input type="text"  formControlName="name" /></label>
+      <div class="div_input"><label> Name:  <input type="text"  formControlName="name" /></label>
       <div class="error" *ngIf="isControlInvalid('name')">
         Имя должно состоять только из русских букв
       </div></div>
-      <div class="div_input"><label>Name: <input type="text"  formControlName="email" /></label>
+      <div class="div_input"><label>email: <input type="text"  formControlName="email" /></label>
       <div class="error" *ngIf="isControlInvalid('email')">
         Email не введен
       </div></div>
@@ -14,4 +14,4 @@
 
 <div>
   {{myFirstReactiveForm.value | json}}
- </div>
+</div>

@@ -1,5 +1,6 @@
 {
-  "emails": {
-    "moroko@i.ua": { "exist": true}
-    }
+  "emails": [
+    "moroko@i.ua",
+    "irsa@i.ua"
+  ]
 }
